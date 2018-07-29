@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">List View Task</string>
+    <integer name="api_request_code">9001</integer>
+</resources>
