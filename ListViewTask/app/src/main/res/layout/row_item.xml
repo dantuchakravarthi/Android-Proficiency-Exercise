@@ -9,7 +9,6 @@
 
     <TextView
         android:id="@+id/row_title"
-        android:text="Beavers"
         android:textSize="18sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

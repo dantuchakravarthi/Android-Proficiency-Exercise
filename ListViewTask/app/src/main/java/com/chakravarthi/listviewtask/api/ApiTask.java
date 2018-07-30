@@ -27,7 +27,7 @@ public class ApiTask extends AsyncTask<String, Void, JSONObject> {
             URL u = new URL(params[0]);
             HttpURLConnection httpURLConnection = (HttpURLConnection) u.openConnection();
             httpURLConnection.setRequestMethod("GET");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "ISO-8859-1"));
             StringBuilder stringBuilder = new StringBuilder();
             String line;
             while ((line = bufferedReader.readLine()) != null) {

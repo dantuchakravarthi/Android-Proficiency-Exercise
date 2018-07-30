@@ -24,12 +24,17 @@ public class RowListAdapter extends BaseAdapter {
     private ArrayList<JSONObject> rowItems;
     private LayoutInflater inflater;
 
-
    public RowListAdapter(Context context, ArrayList<JSONObject> rowItems) {
        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
        this.context = context;
        this.rowItems = rowItems;
    }
+
+    public void refreshEvents(ArrayList<JSONObject> rowItems) {
+        this.rowItems.clear();
+        this.rowItems.addAll(rowItems);
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getCount() {
@@ -49,7 +54,6 @@ public class RowListAdapter extends BaseAdapter {
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-
         View v = convertView;
         ViewHolder viewHolder;
 
@@ -62,40 +66,41 @@ public class RowListAdapter extends BaseAdapter {
                 viewHolder.rowTitle = v.findViewById(R.id.row_title);
                 viewHolder.rowDescription = v.findViewById(R.id.row_description);
                 viewHolder.rowImage = v.findViewById(R.id.row_image);
-
-                Log.e("pos", "" + position);
-
-                JSONObject rowItemObject = rowItems.get(position);
-                viewHolder.rowTitle.setText(rowItemObject.has("title") ? rowItemObject.getString("title") : "NA");
-                viewHolder.rowDescription.setText(rowItemObject.has("description") ? rowItemObject.getString("description") : "NA");
-
-                if (rowItemObject.has("imageHref")) {
-                    if (rowItemObject.getString("imageHref") != null) {
-                        Picasso.with(context).load(rowItemObject.getString("imageHref")).placeholder(R.drawable.placeholder_image).
-                                into(viewHolder.rowImage);
-                    } else {
-                        Picasso.with(context).load(R.drawable.placeholder_image).into(viewHolder.rowImage);
-                    }
-                }
-
             } else {
                 viewHolder = (ViewHolder) v.getTag();
+            }
 
-                Log.e("pos", "" + position);
+            JSONObject rowItemObject = rowItems.get(position);
 
-                JSONObject rowItemObject = rowItems.get(position);
-                viewHolder.rowTitle.setText(rowItemObject.has("title") ? rowItemObject.getString("title") : "NA");
-                viewHolder.rowDescription.setText(rowItemObject.has("description") ? rowItemObject.getString("description") : "NA");
-
-                if (rowItemObject.has("imageHref")) {
-                    if (rowItemObject.getString("imageHref") != null) {
-                        Picasso.with(context).load(rowItemObject.getString("imageHref")).placeholder(R.drawable.placeholder_image).
-                                into(viewHolder.rowImage);
-                    } else {
-                        Picasso.with(context).load(R.drawable.placeholder_image).into(viewHolder.rowImage);
-                    }
+            if(rowItemObject.has("title")) {
+                if(!rowItemObject.getString("title").equals("null")) {
+                    viewHolder.rowTitle.setText(rowItemObject.getString("title"));
+                } else {
+                    viewHolder.rowTitle.setText(R.string.not_available);
                 }
+            } else {
+                viewHolder.rowTitle.setText(R.string.not_available);
+            }
 
+            if(rowItemObject.has("description")) {
+                if(!rowItemObject.getString("description").equals("null")) {
+                    viewHolder.rowDescription.setText(rowItemObject.getString("description"));
+                } else {
+                    viewHolder.rowDescription.setText(R.string.not_available);
+                }
+            } else {
+                viewHolder.rowDescription.setText(R.string.not_available);
+            }
+
+            if (rowItemObject.has("imageHref")) {
+                if (rowItemObject.getString("imageHref") != null) {
+                    Picasso.with(context).load(rowItemObject.getString("imageHref")).placeholder(R.drawable.placeholder_image).
+                            into(viewHolder.rowImage);
+                } else {
+                    Picasso.with(context).load(R.drawable.placeholder_image).into(viewHolder.rowImage);
+                }
+            } else {
+                Picasso.with(context).load(R.drawable.placeholder_image).into(viewHolder.rowImage);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -108,5 +113,4 @@ public class RowListAdapter extends BaseAdapter {
         TextView rowTitle, rowDescription;
         ImageView rowImage;
     }
-
 }

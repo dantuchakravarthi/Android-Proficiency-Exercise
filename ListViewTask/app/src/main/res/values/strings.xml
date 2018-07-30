@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">List View Task</string>
+    <string name="refresh_btn_label">Refresh</string>
+    <string name="error_layout_text_label">Unable to load information</string>
+    <string name="not_available">NA</string>
     <integer name="api_request_code">9001</integer>
 </resources>
