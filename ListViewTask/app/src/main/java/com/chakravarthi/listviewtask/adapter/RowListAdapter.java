@@ -3,12 +3,14 @@ package com.chakravarthi.listviewtask.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chakravarthi.listviewtask.R;
@@ -96,11 +98,17 @@ public class RowListAdapter extends BaseAdapter {
                 if (rowItemObject.getString("imageHref") != null) {
                     Picasso.with(context).load(rowItemObject.getString("imageHref")).placeholder(R.drawable.placeholder_image).
                             into(viewHolder.rowImage);
+                    viewHolder.rowImage.setBackgroundColor(context.getResources().getColor(android.R.color.transparent));
+                    viewHolder.rowImage.setScaleType(ImageView.ScaleType.FIT_XY);
                 } else {
-                    Picasso.with(context).load(R.drawable.placeholder_image).into(viewHolder.rowImage);
+                    Picasso.with(context).load(R.drawable.placeholder_image).fit().into(viewHolder.rowImage);
+                    viewHolder.rowImage.setBackgroundColor(context.getResources().getColor(android.R.color.white));
+                    viewHolder.rowImage.setScaleType(ImageView.ScaleType.CENTER);
                 }
             } else {
-                Picasso.with(context).load(R.drawable.placeholder_image).into(viewHolder.rowImage);
+                Picasso.with(context).load(R.drawable.placeholder_image).fit().into(viewHolder.rowImage);
+                viewHolder.rowImage.setBackgroundColor(context.getResources().getColor(android.R.color.white));
+                viewHolder.rowImage.setScaleType(ImageView.ScaleType.CENTER);
             }
         } catch (Exception e) {
             e.printStackTrace();

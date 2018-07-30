@@ -34,10 +34,10 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="C:\Users\cdantu\Downloads\if_icon-ios7-refresh-empty_211812.png" />
-                                      <entry key="outputName" value="ic_action_refresh" />
+                                      <entry key="imageAsset" value="D:\Development\Unused images\new_mobile\if_ic_keyboard_arrow_up_48px_352469.png" />
+                                      <entry key="outputName" value="ic_arrow_right" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="ffffff" />
+                                      <entry key="themeColor" value="000000" />
                                     </map>
                                   </option>
                                 </PersistentState>

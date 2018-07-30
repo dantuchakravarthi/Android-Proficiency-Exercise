@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".MainActivity">
 
     <ProgressBar
@@ -14,6 +15,8 @@
     <ListView
         android:id="@+id/rows_view"
         android:visibility="gone"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

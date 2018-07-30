@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/colorWhite"
     android:padding="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -10,6 +11,9 @@
     <TextView
         android:id="@+id/row_title"
         android:textSize="18sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/colorBlack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -18,28 +22,32 @@
         android:orientation="horizontal"
         android:weightSum="1"
         android:layout_marginTop="2dp"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/row_description"
+            android:textSize="14sp"
             android:layout_width="0dp"
-            android:layout_weight="0.6"
-            android:layout_height="match_parent"/>
+            android:layout_weight="0.4"
+            android:textColor="@color/colorBlack"
+            android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/row_image"
-            android:layout_weight="0.3"
+            android:layout_weight="0.5"
             android:layout_width="0dp"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             android:src="@drawable/placeholder_image"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:layout_weight="0.1"
             android:layout_width="0dp"
-            android:src="@android:drawable/arrow_down_float"
-            android:rotation="270"
+            android:layout_gravity="top"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_arrow_right"
+            android:rotation="90"
             android:layout_height="wrap_content"
             tools:ignore="ContentDescription" />
     </LinearLayout>

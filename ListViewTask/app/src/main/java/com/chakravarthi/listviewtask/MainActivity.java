@@ -10,13 +10,10 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
 import com.chakravarthi.listviewtask.adapter.RowListAdapter;
 import com.chakravarthi.listviewtask.api.ApiTask;
 import com.chakravarthi.listviewtask.constants.ApiConstants;
 import com.chakravarthi.listviewtask.interfaces.OnApiTaskCompleted;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -57,7 +54,6 @@ public class MainActivity extends Activity implements OnApiTaskCompleted {
         super.onOptionsItemSelected(item);
         switch(item.getItemId()){
             case R.id.btn_refresh:
-                Toast.makeText(getBaseContext(), "You selected refresh", Toast.LENGTH_SHORT).show();
                 refreshListItems();
                 break;
         }
